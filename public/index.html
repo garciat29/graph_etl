@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Graph ETL</title>
+  <script type="text/javascript" src="/javascripts/helpers.js"></script>
+</head>
+
+<div class="sql_input">
+  <textarea name="sql_input_box" cols="100" rows="20" id="rawInput">
+ SELECT t.trip_id, t.duration, ss.name as start_station, ss.lat as start_lat, ss."long" as start_long, es.name as end_station, es.lat as end_lat, es."long" as end_long
+ FROM data.trip t
+ INNER JOIN data.station ss
+ ON ss.name=t.start_station
+ INNER JOIN data.station es
+ ON es.name=t.end_station
+ LIMIT 1000
+  </textarea>
+<br />
+<button id="previewButton" type="button" onclick="preview()">
+    Preview</button>
+
+</div>
+
+<div id="preview_output" class="preview_pane">
+</div>
+
+<div id="left_node" name="node" class="node_define">
+<form>
+  <br> <br>
+  Left Node Label: <input type="text" name="left_label" value="Trip">  <br>
+  Property : Column Name <br>
+  <input type="text" id="property_label" name="property_label1" value="trip_id">
+  <input type="text" name="property_column1" value="trip_id"> <br>
+  <input type="text" id="property_label" name="property_label2" value="duration">
+  <input type="text" name="property_column2" value="duration"> <br>
+</form>
+</div>
+
+
+<div id="right_node" name="node" class="node_define">
+<form>
+  <br> <br>
+  Right Node Label: <input type="text" name="right_label" value="Station">  <br>
+  Property : Column Name <br>
+  <input type="text" name="property_label" value="name">
+  <input type="text" name="property_column" value="start_station"> <br>
+  <input type="text" name="property_label" value="lat">
+  <input type="text" name="property_column" value="start_lat"> <br>
+  <input type="text" name="property_label" value="long">
+  <input type="text" name="property_column" value="start_long"> <br>
+</form>
+</div>
+
+<div id="relationship" class="rel_define">
+<form>
+  <br>
+  Relationship Title: <input type="text" name="rel_label" value="PICKUP"> <br>
+  Relationship Direction: <input type="text" name="rel_dir" value="right">
+</form>
+</div>
+<button id="load_button" type="button" onclick="loadGraph()">
+    Load To Graph</button>
+</html>

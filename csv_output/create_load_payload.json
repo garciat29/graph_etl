@@ -1,0 +1,8 @@
+{
+"filename" : "c:/Users/garci/Documents/GitHub/graph_etl/csv_output/test.csv",
+"nodes":[{"label":"Station", "alias":"ss", "properties": {"name":"start_station", "lat":"start_lat", "long":"start_long"}},
+		{"label":"Station", "alias":"es", "properties": {"name":"end_station", "lat":"end_lat", "long":"end_long"}},
+		{"label": "Trip", "alias":"t", "properties": {"trip_id": "trip_id", "duration": "duration"}}
+		],
+"relationships": [{"left_alias": "t", "right_alias":"es", "rel_label":"DROPOFF", "arrow_dir":"right"},{"left_alias": "t", "right_alias":"ss", "rel_label":"PICKUP", "arrow_dir":"right"} ]
+}

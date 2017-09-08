@@ -1,0 +1,5 @@
+{filename: "../csv_output/test.csv",
+nodes: [{label:"Station", alias: "ss", properties: {name:"start_station", lat:"start_lat", long:"start_long}}, 
+		{label:"Trip", alias: "t", properties: {trip_id: "trip_id", duration:"duration"}],
+relationships: [{left_alias: "t", right_alias: "t", rel_label:"FROM", arrow_dir:"right"}, ...]
+}
